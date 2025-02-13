@@ -54,62 +54,10 @@ body {
 }
 
 .love-message {
+    margin-top: 30px;
     font-style: italic;
-    color: #FF4081;
-    font-size: 1.3rem;
-    margin-top: 2rem;
-    font-weight: 500;
-    position: relative;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    border-top: 2px solid rgba(255, 105, 180, 0.2);
-    animation: messageGlow 2s ease-in-out infinite;
-}
-
-.love-message::before,
-.love-message::after {
-    content: '💝';
-    position: absolute;
+    color: #ff4d4d;
     font-size: 1.2rem;
-    top: -1rem;
-    opacity: 0.8;
-}
-
-.love-message::before {
-    left: 25%;
-    animation: floatLeft 3s ease-in-out infinite;
-}
-
-.love-message::after {
-    right: 25%;
-    animation: floatRight 3s ease-in-out infinite;
-}
-
-@keyframes messageGlow {
-    0%, 100% {
-        text-shadow: 0 0 5px rgba(255, 64, 129, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 15px rgba(255, 64, 129, 0.5);
-    }
-}
-
-@keyframes floatLeft {
-    0%, 100% {
-        transform: translateY(0) rotate(-10deg);
-    }
-    50% {
-        transform: translateY(-5px) rotate(5deg);
-    }
-}
-
-@keyframes floatRight {
-    0%, 100% {
-        transform: translateY(0) rotate(10deg);
-    }
-    50% {
-        transform: translateY(-5px) rotate(-5deg);
-    }
 }
 
 @keyframes pulse {
@@ -473,13 +421,6 @@ h1::after {
 
     .love-message {
         font-size: 1.1rem;
-        margin-top: 1.5rem;
-        padding: 1rem;
-    }
-    
-    .love-message::before,
-    .love-message::after {
-        font-size: 1rem;
     }
 }
 
