@@ -1,0 +1,465 @@
+:root {
+    --primary-color: #FF4081;
+    --secondary-color: #FF80AB;
+    --accent-color: #FF1744;
+    --text-color: #333;
+    --card-bg: rgba(255, 255, 255, 0.97);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #FF4500, #FF8C00);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+    transition: background 1s ease;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.valentine-card {
+    position: relative;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.main-heart {
+    font-size: 4rem;
+    margin: 20px 0;
+    animation: pulse 1.5s infinite;
+}
+
+.love-message {
+    margin-top: 30px;
+    font-style: italic;
+    color: #ff4d4d;
+    font-size: 1.2rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.valentine-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(15px);
+}
+
+.valentine-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(125deg, 
+        rgba(255,255,255,0.3) 0%,
+        rgba(255,255,255,0.2) 20%,
+        rgba(255,255,255,0) 50%);
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+@keyframes gradientBorder {
+    0% { filter: blur(15px) hue-rotate(0deg); }
+    50% { filter: blur(20px) hue-rotate(180deg); }
+    100% { filter: blur(15px) hue-rotate(360deg); }
+}
+
+.main-heart {
+    color: var(--primary-color);
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: pulse 1.5s ease-in-out infinite;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 20px rgba(255,64,129,0.5);
+}
+
+.main-heart:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.heart-click {
+    animation: heartBurst 1s ease-out;
+}
+
+@keyframes heartBurst {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5) rotate(45deg); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); text-shadow: 0 0 20px rgba(255,64,129,0.5); }
+    50% { transform: scale(1.1) rotate(-5deg); text-shadow: 0 0 30px rgba(255,64,129,0.8); }
+    100% { transform: scale(1); text-shadow: 0 0 20px rgba(255,64,129,0.5); }
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    animation: borderGlow 2s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+.quote, .love-fact, .fact {
+    position: relative;
+    background: rgba(255, 192, 203, 0.15);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px 0;
+    color: #ff1493;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+}
+
+.quote::before, .love-fact::before, .fact::before {
+    display: none;
+}
+
+.quote::after, .love-fact::after, .fact::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 105, 180, 0.2);
+    pointer-events: none;
+}
+
+.quote, .love-fact, .fact {
+    --heart-size: 16px;
+}
+
+.quote .corner-heart, .love-fact .corner-heart, .fact .corner-heart {
+    position: absolute;
+    width: var(--heart-size);
+    height: var(--heart-size);
+    font-size: var(--heart-size);
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.corner-heart-tl { top: -8px; left: -8px; }
+.corner-heart-tr { top: -8px; right: -8px; }
+.corner-heart-bl { bottom: -8px; left: -8px; }
+.corner-heart-br { bottom: -8px; right: -8px; }
+
+.ribbon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ribbon::before {
+    content: 'С любовью';
+    position: absolute;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 0;
+    width: 150px;
+    text-align: center;
+    transform: rotate(45deg) translateY(-20px);
+    font-size: 0.9rem;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    animation: ribbonWave 3s ease-in-out infinite;
+}
+
+@keyframes ribbonWave {
+    0%, 100% { transform: rotate(45deg) translateY(-20px); }
+    50% { transform: rotate(45deg) translateY(-15px); }
+}
+
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 2.5rem;
+    z-index: -1;
+    transition: transform 5s ease-in-out;
+}
+
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #fff 10%, transparent 70%);
+    pointer-events: none;
+    animation: sparkleAnim 1s linear forwards;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1) rotate(180deg); opacity: 0; }
+}
+
+.move-up {
+    animation: moveUp 5s linear infinite;
+}
+
+.move-down {
+    animation: moveDown 5s linear infinite;
+}
+
+.move-left {
+    animation: moveLeft 5s linear infinite;
+}
+
+.move-right {
+    animation: moveRight 5s linear infinite;
+}
+
+@keyframes moveUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes moveDown {
+    from {
+        transform: translateY(-100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(-100vw);
+    }
+}
+
+@keyframes moveRight {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+.heart-1 { animation-duration: 8s; }
+.heart-2 { animation-duration: 12s; }
+.heart-3 { animation-duration: 10s; }
+.heart-4 { animation-duration: 15s; }
+.heart-5 { animation-duration: 11s; }
+
+.path-1 {
+    animation-name: path1;
+}
+
+.path-2 {
+    animation-name: path2;
+}
+
+.path-3 {
+    animation-name: path3;
+}
+
+@keyframes path1 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(200px, -100px) rotate(120deg); }
+    66% { transform: translate(-200px, -100px) rotate(240deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes path2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-150px, 150px) scale(1.5); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes path3 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(100px, 100px) rotate(90deg) scale(1.2); }
+    50% { transform: translate(200px, 0) rotate(180deg) scale(1.5); }
+    75% { transform: translate(100px, -100px) rotate(270deg) scale(1.2); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+        background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .valentine-card {
+        margin: 0;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    .main-heart {
+        font-size: 3rem;
+        margin: 15px 0;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        margin: 15px 0;
+        color: #ff3366;
+    }
+
+    .quote, .love-fact, .fact {
+        --heart-size: 14px;
+        background: rgba(255, 192, 203, 0.2);
+        padding: 12px;
+        margin: 15px 0;
+        font-size: 1rem;
+        border-radius: 12px;
+        border-width: 1px;
+    }
+}
+
+@media (max-width: 600px) {
+    .valentine-card {
+        margin: 1rem;
+        padding: 2rem;
+        max-width: calc(100% - 2rem);
+        font-size: 0.9rem;
+        border-radius: 40% 40% 48% 52% / 30% 30% 70% 70%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .main-heart {
+        font-size: 4rem;
+    }
+
+    .quote, .love-fact, .fact {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .love-message {
+        font-size: 1.1rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 350px) {
+    .valentine-card {
+        padding: 1.5rem;
+        border-radius: 35% 35% 48% 52% / 30% 30% 70% 70%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .main-heart {
+        font-size: 3.5rem;
+    }
+}
+
+/* Для ландшафтной ориентации на мобильных */
+@media (max-height: 600px) and (orientation: landscape) {
+    .valentine-card {
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .main-heart {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .quote, .love-fact, .fact {
+        margin: 0.8rem 0;
+        padding: 0.8rem;
+    }
+}
